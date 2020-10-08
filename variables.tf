@@ -124,3 +124,8 @@ variable "ecs_task_role_arn" {
   type        = string
   description = "The ARN of the ECS Task IAM Role."
 }
+
+variable "ecs_task_volume_name" {
+  default = ""
+  type = string
+}
