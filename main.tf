@@ -32,6 +32,7 @@ resource "aws_cloudwatch_event_target" "default" {
     launch_type         = "FARGATE"
     task_count          = var.task_count
     task_definition_arn = aws_ecs_task_definition.default[0].arn
+    propagate_tags      = "TASK_DEFINITION"
 
     # Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0.
     # This structure is used only if LaunchType is FARGATE.
