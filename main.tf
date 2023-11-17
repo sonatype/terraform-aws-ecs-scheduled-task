@@ -231,6 +231,8 @@ data "aws_iam_policy_document" "ecs_task_role_assume_policy" {
 }
 
 resource "aws_iam_role" "ecs_task_role" {
+  count = var.enabled ? 1 : 0
+
   name               = local.ecs_task_iam_name
   assume_role_policy = data.aws_iam_policy_document.ecs_task_role_assume_policy.json
 }
