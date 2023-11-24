@@ -206,33 +206,9 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 locals {
   ecs_task_execution_iam_name = "${var.name}-ecs-task-execution"
-  ecs_task_iam_name           = "${var.name}-ecs-task"
   enabled_ecs_task_execution  = var.enabled && var.create_ecs_task_execution_role ? 1 : 0
 }
 
 data "aws_iam_policy" "ecs_task_execution" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-}
-
-# ECS Task Role for Fargate
-data "aws_iam_policy_document" "ecs_task_role_assume_policy" {
-  statement {
-    effect  = "Allow"
-    actions = ["sts:AssumeRole"]
-
-    principals {
-      type = "Service"
-
-      identifiers = [
-        "ecs-tasks.amazonaws.com",
-      ]
-    }
-  }
-}
-
-resource "aws_iam_role" "ecs_task_role" {
-  count = var.enabled ? 1 : 0
-
-  name               = local.ecs_task_iam_name
-  assume_role_policy = data.aws_iam_policy_document.ecs_task_role_assume_policy.json
 }
