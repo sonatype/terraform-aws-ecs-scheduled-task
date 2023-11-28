@@ -23,6 +23,7 @@ resource "aws_cloudwatch_event_target" "default" {
 
   target_id = var.name
   arn       = var.cluster_arn
+  input     = var.target_input
   rule      = aws_cloudwatch_event_rule.default[0].name
   role_arn  = var.create_ecs_events_role ? join("", aws_iam_role.ecs_events.*.arn) : var.ecs_events_role_arn
 

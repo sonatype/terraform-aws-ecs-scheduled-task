@@ -129,3 +129,9 @@ variable "ecs_task_volume_name" {
   default = ""
   type = string
 }
+
+variable "target_input" {
+  default     = jsonencode({})
+  type        = string
+  description = "Valid JSON text passed to the target."
+}
