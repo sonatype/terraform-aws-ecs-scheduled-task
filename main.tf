@@ -8,7 +8,7 @@ resource "aws_cloudwatch_event_rule" "default" {
 
   name        = var.name
   description = var.description
-  is_enabled  = var.is_enabled
+  state       = var.is_enabled ? "ENABLED" : "DISABLED"
 
   # All scheduled events use UTC time zone and the minimum precision for schedules is 1 minute.
   # CloudWatch Events supports Cron Expressions and Rate Expressions
