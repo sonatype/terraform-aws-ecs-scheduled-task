@@ -157,6 +157,13 @@ resource "aws_ecs_task_definition" "default" {
     name = var.ecs_task_volume_name
   }
 
+  # The operating system and cpu architecture. Required when Amazon ECS tasks that are hosted on Fargate.
+  # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#runtime-platform
+  runtime_platform {
+    operating_system_family = var.operating_system_family
+    cpu_architecture        = var.cpu_architecture
+  }
+
   # A mapping of tags to assign to the resource.
   tags = merge({ "Name" = var.name }, var.tags)
 }

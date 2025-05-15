@@ -127,11 +127,21 @@ variable "ecs_task_role_arn" {
 
 variable "ecs_task_volume_name" {
   default = ""
-  type = string
+  type    = string
 }
 
 variable "target_input" {
   default     = ""
   type        = string
   description = "Valid JSON text passed to the target."
+}
+
+variable "operating_system_family" {
+  type        = string
+  description = "Operating system family for runtime. Valid values are LINUX, WINDOWS_SERVER_2019_FULL, WINDOWS_SERVER_2019_CORE, WINDOWS_SERVER_2022_FULL, and WINDOWS_SERVER_2022_CORE"
+}
+
+variable "cpu_architecture" {
+  type        = string
+  description = "CPU architecture for runtime. Valid values are X86_64 and ARM64"
 }
