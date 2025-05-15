@@ -137,11 +137,13 @@ variable "target_input" {
 }
 
 variable "operating_system_family" {
+  default     = "LINUX"
   type        = string
   description = "Operating system family for runtime. Valid values are LINUX, WINDOWS_SERVER_2019_FULL, WINDOWS_SERVER_2019_CORE, WINDOWS_SERVER_2022_FULL, and WINDOWS_SERVER_2022_CORE"
 }
 
 variable "cpu_architecture" {
+  default     = "X86_64"
   type        = string
   description = "CPU architecture for runtime. Valid values are X86_64 and ARM64"
 }
